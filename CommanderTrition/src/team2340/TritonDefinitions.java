@@ -121,15 +121,14 @@ public class TritonDefinitions {
     
     // can jag ids
     public final static int TRITION_FRONTRIGHT_DRIVE_JAG_ID = 5;
-    public final static int TRITION_FRONTLEFT_DRIVE_JAG_ID = 4;
+    public final static int TRITION_FRONTLEFT_DRIVE_JAG_ID = 7;
     public final static int TRITION_BACKRIGHT_DRIVE_JAG_ID = 3;
     public final static int TRITION_BACKLEFT_DRIVE_JAG_ID = 2;
-    // TODO ID's need to be defined for additional motors.
-    public final static int TRITION_ACQUISITION_SPINNER_ID = 0;
-    public final static int TRITION_ACQUISITION_ARM_ID = 0;
-    public final static int TRITION_BOX_MOTOR_ID = 0;
-    public final static int TRITION_TOP_FLY_WHEEL_ID = 0;
-    public final static int TRITION_BOTTOM_FLY_WHEEL_ID = 0;
+    public final static int TRITION_ACQUISITION_SPINNER_ID = 10;
+    public final static int TRITION_ACQUISITION_ARM_ID = 6;
+    public final static int TRITION_TOP_FLY_WHEEL_ID = 8;
+    public final static int TRITION_BOTTOM_FLY_WHEEL_ID = 4;
+    public final static int TRITON_BOX_MOTOR_ID = 9;
     
     
     // analog channels
@@ -170,9 +169,16 @@ public class TritonDefinitions {
     public static double ACQUISITION_ARM_OUT_SPEED = 0.25;
     public static double ACQUISITION_ARM_IN_SPEED = -0.25;
     public static long SHOOTER_SLEEP_TIME = 10;
-    public static double TOP_FLYWHEEL_SPEED = 0.75;
-    public static double BOTTOM_FLYWHEEL_SPEED = -0.75;
+    public static double TOP_FLYWHEEL_SPEED = -1.00;
+    public static double BOTTOM_FLYWHEEL_SPEED = 1.00;
     public static double FLY_WHEEL_STOP = 0.0;
+    public static double TRITON_SPINNER_SPEED = 0.5;
+    public static double TRITON_SPINNER_STOP = 0.0;
+    public static double FLYWHEEL_STOP = 0.0;
+    public static double BOX_SPEED_STOP = 0.0;
+    public static double TRITON_SPINNER_REVERSE = -0.5;
+    public static String JAG_LOWVOLTAGE = "JAG_LOWVOLTAGE";
+
    
     
     

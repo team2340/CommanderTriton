@@ -3,7 +3,9 @@ package edu.wpi.first.wpilibj.templates.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.templates.OI;
-import edu.wpi.first.wpilibj.templates.subsystems.TritonDrive;
+import edu.wpi.first.wpilibj.templates.subsystems.TritonAcquisitionSubsystem;
+import edu.wpi.first.wpilibj.templates.subsystems.TritonBoxSubsystem;
+import edu.wpi.first.wpilibj.templates.subsystems.TritonDriveSubsystem;
 
 /**
  * The base for all commands. All atomic commands should subclass CommandBase.
@@ -14,7 +16,10 @@ import edu.wpi.first.wpilibj.templates.subsystems.TritonDrive;
 public abstract class CommandBase extends Command {
 
     public static OI oi;
-    public static TritonDrive drive = TritonDrive.getInstance();
+    public TritonDriveSubsystem drive = TritonDriveSubsystem.getInstance();
+    public TritonAcquisitionSubsystem acquisition = TritonAcquisitionSubsystem.getInstance();
+    public TritonBoxSubsystem theBox = TritonBoxSubsystem.getInstance();
+   
     // Create a single static instance of all of your subsystems
 
 

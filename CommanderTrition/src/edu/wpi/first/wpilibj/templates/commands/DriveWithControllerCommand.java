@@ -14,7 +14,7 @@ import toolkit.LogitechF310;
  */
 public class DriveWithControllerCommand extends CommandBase{
 
-        LogitechF310 controller;
+        private LogitechF310 controller;
         
     public DriveWithControllerCommand() {
         requires(drive);

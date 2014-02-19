@@ -3,6 +3,7 @@ package edu.wpi.first.wpilibj.templates;
 
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.DigitalIOButton;
+import edu.wpi.first.wpilibj.templates.commands.*;
 import team2340.TritonDefinitions;
 import toolkit.LogitechF310;
 import toolkit.Direction;
@@ -19,12 +20,26 @@ public class OI {
             TritonDefinitions.TRITON_DRIVE_CONTROLLER_PORT);
     
       public OI() {
-        //driveController.getAButton().whenPressed(new ExecuteDPCommand());
-        //driveController.getBButton().whenPressed(new ExecutePistonUpCommand());
-        //driveController.getXButton().whenPressed(new ExecutePistonDownCommand());
-        //driveController.getYButton().whenPressed(new ExecuteGyroMonitorCommand());
+          checkShooterController();
+          checkDriverController();
+
+         
+
     }
-    
+    private void checkShooterController(){
+             shooterController.getAButton().whenPressed(new ShootBall());
+         shooterController.getRBButton().whenPressed(new LookUp());
+         shooterController.getLBButton().whenPressed(new SlowLookUp() );
+         shooterController.getLTButton().whenPressed(new SlowLookDown() );
+         shooterController.getRTButton().whenPressed(new LookDown());
+    }
+    private void checkDriverController(){         
+        driveController.getXButton().whenPressed(new LowerArm());
+         driveController.getYButton().whenPressed(new RaiseArm());
+         driveController.getAButton().whenPressed(new AcquireBallCommand());
+         driveController.getBButton().whenPressed(new RepelBallCommand());
+
+    }
     public double getRightStickY() {
         return driveController.getRightStick().getY();
     }
@@ -33,7 +48,7 @@ public class OI {
         return driveController.getLeftStick().getY();
     }
     
-    public Direction getRightStic() {
+    public Direction getRightStick() {
         return driveController.getRightStick();
     }
     
