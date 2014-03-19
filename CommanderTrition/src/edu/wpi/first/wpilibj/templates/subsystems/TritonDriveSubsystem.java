@@ -34,6 +34,7 @@ public class TritonDriveSubsystem extends Subsystem {
     double d;
 
     static public TritonDriveSubsystem getInstance() {
+        System.out.println(" Triton Drive Subsystem get instance");
         if (subsystem == null) {
             subsystem = new TritonDriveSubsystem();
         }
@@ -45,6 +46,7 @@ public class TritonDriveSubsystem extends Subsystem {
     }
 
     private TritonDriveSubsystem() {
+        System.out.println("TritionDriveSubsystem created");
         jagMode = new CANJaguarModeSwitcher();
         frontLeft = jagMode.initializeOpenLoop(TritonDefinitions.TRITION_FRONTLEFT_DRIVE_JAG_ID);
         backLeft = jagMode.initializeOpenLoop(TritonDefinitions.TRITION_BACKLEFT_DRIVE_JAG_ID);
@@ -107,11 +109,17 @@ public class TritonDriveSubsystem extends Subsystem {
         }
     }
 
-    synchronized private void directionalDrive(Direction main, Direction rotational) throws CANTimeoutException {
-        frontRight.setX((-1 * main.y) + rotational.x + main.x);
-        frontLeft.setX((-1 * main.y) - rotational.x - main.x);
-        backRight.setX((-1 * main.y) + rotational.x - main.x);
-        backLeft.setX((-1 * main.y) - rotational.x + main.x);
+    synchronized private void directionalDrive(Direction leftSide, Direction rightSide, double scaleFactor) {
+        try {
+        double leftValue = leftSide.getY() * scaleFactor;
+        double rightValue = rightSide.getY() * scaleFactor * -1;
+        System.out.println(" Directional Drive: " + leftValue + " r: " + rightValue);
+        frontLeft.setX(leftValue);
+        backLeft.setX(leftValue);
+        frontRight.setX(rightValue);
+        backRight.setX(rightValue);
+        } catch (Exception ex) {ex.printStackTrace();}
+        
 
     }
 
@@ -137,6 +145,8 @@ public class TritonDriveSubsystem extends Subsystem {
    
 
     public void controlledDrive(double xValue, double yValue) {
+        SmartDashboard.putNumber("SpeedTest", yValue);
+        SmartDashboard.putNumber("SpeedGraph", xValue);
         try {
             if (xValue == 0.0 && yValue > 0.0) {
                 forward(yValue);
@@ -147,7 +157,7 @@ public class TritonDriveSubsystem extends Subsystem {
             } else if (xValue < 0.0 && yValue == 0.0) {
                 left(xValue);
             } else {
-                //   driveBreak();
+                   driveBreak();
             }
 
         } catch (Exception ex) {
@@ -157,26 +167,21 @@ public class TritonDriveSubsystem extends Subsystem {
 
     public void mainDrive(Direction leftDirection, Direction rightDirection, Direction dPad, boolean rightBack,
             boolean leftBack, boolean rightTop, boolean leftTop) {
-
-        try {
-            if (rightTop) {
-                System.out.println("left X: " + leftDirection.getX() + " Y: " + leftDirection.getY()
-                        + " right x: " + rightDirection.getX() + " y: " + rightDirection.getY() + " dPad X: "
-                        + dPad.getX() + " y: " + dPad.getY());
-
+            
+            double driveSetting = 0.75;
+            try {
+            driveSetting = SmartDashboard.getNumber("DriverSlider");
+            SmartDashboard.putNumber("DriverBox", driveSetting);
+            } catch (Exception ex) {}
+            if ( dPad.getX() != 0 || dPad.getY() != 0) {
+            controlledDrive((driveSetting * dPad.getX()), (driveSetting * dPad.getY())); 
             }
-            if (leftTop) {
-                directionalDrive(leftDirection, rightDirection);
-            } else {
-                controlledDrive((.75 * dPad.getX()), (.75 * dPad.getY()));
-                if (dPad.getX() == 0 && dPad.getY() == 0);
-                {
-                     driveBreak();
-                }
+            else if ( leftDirection.getY() != 0 || rightDirection.getY() != 0) {
+            directionalDrive(leftDirection, rightDirection, driveSetting);
             }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+            else {
+                driveBreak();
+            }
 
     }
 //TODO: VERIFY LEFT/RIGHT MOVEMENT

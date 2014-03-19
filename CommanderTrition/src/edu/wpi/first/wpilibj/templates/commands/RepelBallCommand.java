@@ -6,6 +6,8 @@
 
 package edu.wpi.first.wpilibj.templates.commands;
 
+import team2340.TritonDefinitions;
+
 /**
  *
  * @author Team2340
@@ -14,7 +16,7 @@ public class RepelBallCommand extends CommandBase{
 
     public RepelBallCommand() {
         requires(acquisition);
-        setTimeout(2);
+        setTimeout(TritonDefinitions.TRITON_SPINNER_TIMEOUT);
     }
     protected void initialize() {
     

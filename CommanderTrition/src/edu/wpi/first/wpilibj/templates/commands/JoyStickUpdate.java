@@ -6,35 +6,34 @@
 
 package edu.wpi.first.wpilibj.templates.commands;
 
-import team2340.TritonDefinitions;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
  * @author Team2340
  */
-public class AcquireBallCommand extends CommandBase{
+public class JoyStickUpdate extends CommandBase{
+    private String joyStick;
     
-    public AcquireBallCommand() {
-        requires(acquisition);
-        setTimeout(TritonDefinitions.TRITON_SPINNER_TIMEOUT);
+    public JoyStickUpdate(String joystick) {
+        this.joyStick = joystick;
+        setTimeout(.1);
     }
 
     protected void initialize() { }
 
     protected void execute() {
-        acquisition.startSpinner();     
+        SmartDashboard.putBoolean(joyStick, true);
     }
 
     protected boolean isFinished() {
-        return isTimedOut();
-    }
+    return isTimedOut();
+            }
 
     protected void end() {
-        acquisition.stopSpinner();
+        SmartDashboard.putBoolean(joyStick, false);
     }
 
-    protected void interrupted() { 
-        end();
-    }
+    protected void interrupted() {}
     
 }

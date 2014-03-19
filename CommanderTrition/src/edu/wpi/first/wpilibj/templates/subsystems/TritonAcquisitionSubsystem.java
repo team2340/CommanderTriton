@@ -71,6 +71,26 @@ public class TritonAcquisitionSubsystem extends Subsystem {
             }
     }
     
+    public boolean armForwardLimit() {
+        boolean atLimit = false;
+            try {
+                atLimit = !arm.getForwardLimitOK();
+            } catch (CANTimeoutException ex) {
+                ex.printStackTrace();
+                System.out.println(" armForward limit exception");
+            }
+        return atLimit;
+    }
+    public boolean armReverseLimit() {
+        boolean atLimit = false;
+            try {
+                atLimit = !arm.getReverseLimitOK();
+            } catch (CANTimeoutException ex) {
+                ex.printStackTrace();
+                System.out.println(" armFormware limit exception");
+            }
+        return atLimit; 
+    }
     public void armOut() {
             try {
                 arm.setX(TritonDefinitions.ACQUISITION_ARM_OUT_SPEED);

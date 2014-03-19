@@ -13,13 +13,14 @@ import toolkit.Direction;
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
-    LogitechF310 driveController = new LogitechF310("Drive Controller",
+ LogitechF310 driveController = new LogitechF310("Drive Controller",
             TritonDefinitions.TRITON_DRIVE_CONTROLLER_PORT);
     
     LogitechF310 shooterController = new LogitechF310("Shooter Controller",
-            TritonDefinitions.TRITON_DRIVE_CONTROLLER_PORT);
+            TritonDefinitions.TRITON_SHOOTER_CONTROLLER_PORT);
     
       public OI() {
+
           checkShooterController();
           checkDriverController();
 
@@ -27,18 +28,31 @@ public class OI {
 
     }
     private void checkShooterController(){
-             shooterController.getAButton().whenPressed(new ShootBall());
+        shooterController.getStartButton().whenPressed(new JoyStickUpdate("SC"));
+       
+        shooterController.getXButton().whenPressed(new LowerArm());
+        shooterController.getYButton().whenPressed(new RaiseArm());
+        
+        shooterController.getBButton().whenPressed(new AcquireBallCommand());
+        shooterController.getAButton().whenPressed(new RepelBallCommand());
+        
+        
+        /*
+         shooterController.getAButton().whenPressed(new ShootBall());
          shooterController.getRBButton().whenPressed(new LookUp());
          shooterController.getLBButton().whenPressed(new SlowLookUp() );
          shooterController.getLTButton().whenPressed(new SlowLookDown() );
          shooterController.getRTButton().whenPressed(new LookDown());
-    }
-    private void checkDriverController(){         
-        driveController.getXButton().whenPressed(new LowerArm());
+    */
+                }
+    private void checkDriverController(){    
+        driveController.getStartButton().whenPressed(new JoyStickUpdate("DC"));
+        
+      /*  driveController.getXButton().whenPressed(new LowerArm());
          driveController.getYButton().whenPressed(new RaiseArm());
          driveController.getAButton().whenPressed(new AcquireBallCommand());
          driveController.getBButton().whenPressed(new RepelBallCommand());
-
+*/
     }
     public double getRightStickY() {
         return driveController.getRightStick().getY();
@@ -55,5 +69,6 @@ public class OI {
     public LogitechF310 getDriveController() {
         return driveController;
     }
+
 }
 

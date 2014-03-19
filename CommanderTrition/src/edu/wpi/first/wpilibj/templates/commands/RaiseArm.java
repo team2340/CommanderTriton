@@ -6,6 +6,8 @@
 
 package edu.wpi.first.wpilibj.templates.commands;
 
+import team2340.TritonDefinitions;
+
 /**
  *
  * @author Team2340
@@ -14,7 +16,7 @@ public class RaiseArm extends CommandBase{
 
     public RaiseArm() {
         requires(acquisition);
-        setTimeout(1);
+        setTimeout(TritonDefinitions.ACQUISITION_ARM_TIMEOUT);
     }
 
 
