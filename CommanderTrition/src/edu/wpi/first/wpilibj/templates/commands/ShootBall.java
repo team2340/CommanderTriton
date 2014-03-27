@@ -15,13 +15,13 @@ public class ShootBall extends CommandBase{
     public ShootBall() {
         requires(theBox);
         //requires(acquisition);
-        setTimeout(10);
+        setTimeout(5);
     }
 
     protected void initialize() { }
 
     protected void execute() {
-        theBox.lookUp();
+        //theBox.lookUp();
         theBox.startFlyWheels();
         //acquisition.startSpinner();
         //acquisition.armIn();

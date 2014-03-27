@@ -16,7 +16,6 @@ public class LowerArm extends CommandBase{
 
     public LowerArm() {
         requires(acquisition);
-        setTimeout(TritonDefinitions.ACQUISITION_ARM_TIMEOUT);
     }
     protected void initialize() {
     }
@@ -26,15 +25,13 @@ public class LowerArm extends CommandBase{
     }
 
     protected boolean isFinished() {
-        return isTimedOut();
+        return true;
     }
 
     protected void end() {
-        acquisition.armStop();
     }
 
     protected void interrupted() {
-        end();
     }
     
 }

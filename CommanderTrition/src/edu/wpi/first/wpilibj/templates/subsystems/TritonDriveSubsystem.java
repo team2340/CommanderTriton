@@ -21,6 +21,8 @@ import toolkit.CANJaguarModeSwitcher;
  *
  * @author Team 2340
  */
+
+
 public class TritonDriveSubsystem extends Subsystem {
 
     static private TritonDriveSubsystem subsystem;
@@ -90,11 +92,15 @@ public class TritonDriveSubsystem extends Subsystem {
         backLeft.setX(value * -1);
     }
 
-    synchronized private void spin(double value) throws CANTimeoutException {
-        frontRight.setX(value);
-        frontLeft.setX(value);
-        backRight.setX(value);
-        backLeft.setX(value);
+    synchronized private void spin(double value) {
+        try {
+            frontRight.setX(value * -1);
+            frontLeft.setX(value);
+            backRight.setX(value * -1);
+            backLeft.setX(value);
+        } catch (CANTimeoutException ex) {
+            ex.printStackTrace();
+        }
     }
 
     synchronized public void driveBreak() {
@@ -156,9 +162,7 @@ public class TritonDriveSubsystem extends Subsystem {
                 right(xValue);
             } else if (xValue < 0.0 && yValue == 0.0) {
                 left(xValue);
-            } else {
-                   driveBreak();
-            }
+            } 
 
         } catch (Exception ex) {
             System.out.println("controlledDrive Exception");
@@ -178,6 +182,14 @@ public class TritonDriveSubsystem extends Subsystem {
             }
             else if ( leftDirection.getY() != 0 || rightDirection.getY() != 0) {
             directionalDrive(leftDirection, rightDirection, driveSetting);
+            }
+            else if (rightBack || leftBack ) {
+                if (rightBack) {
+                    spin(.85);
+                }
+                else if (leftBack) {
+                    spin(-0.85);
+                }
             }
             else {
                 driveBreak();

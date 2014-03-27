@@ -30,20 +30,18 @@ public class OI {
     private void checkShooterController(){
         shooterController.getStartButton().whenPressed(new JoyStickUpdate("SC"));
        
-        shooterController.getXButton().whenPressed(new LowerArm());
-        shooterController.getYButton().whenPressed(new RaiseArm());
+        shooterController.getXButton().whileHeld(new LowerArm());
+        shooterController.getYButton().whileHeld(new RaiseArm());
+        shooterController.getXButton().whenReleased(new HoldArm());
+        shooterController.getYButton().whenReleased(new HoldArm());
         
         shooterController.getBButton().whenPressed(new AcquireBallCommand());
         shooterController.getAButton().whenPressed(new RepelBallCommand());
         
+        shooterController.getRBButton().whenPressed(new ShootBall());
         
-        /*
-         shooterController.getAButton().whenPressed(new ShootBall());
-         shooterController.getRBButton().whenPressed(new LookUp());
-         shooterController.getLBButton().whenPressed(new SlowLookUp() );
-         shooterController.getLTButton().whenPressed(new SlowLookDown() );
-         shooterController.getRTButton().whenPressed(new LookDown());
-    */
+        shooterController.getLBButton().whenPressed(new LookUp());
+        shooterController.getLTButton().whenPressed(new LookDown());
                 }
     private void checkDriverController(){    
         driveController.getStartButton().whenPressed(new JoyStickUpdate("DC"));

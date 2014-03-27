@@ -6,24 +6,20 @@
 
 package edu.wpi.first.wpilibj.templates.commands;
 
-import team2340.TritonDefinitions;
-
 /**
  *
  * @author Team2340
  */
-public class RaiseArm extends CommandBase{
+public class HoldArm extends CommandBase{
 
-    public RaiseArm() {
+    public HoldArm() {
         requires(acquisition);
     }
-
-
     protected void initialize() {
     }
 
     protected void execute() {
-        acquisition.armOut();
+        acquisition.armStop();
     }
 
     protected boolean isFinished() {

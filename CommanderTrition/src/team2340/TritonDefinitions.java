@@ -120,7 +120,8 @@ public class TritonDefinitions {
     public static final double IP_PERCENT_OF_IMAGE_HIGH_INITIAL = 18.2;
     
     // can jag ids
-    public final static int TRITION_FRONTRIGHT_DRIVE_JAG_ID = 4;
+//    
+    public final static int TRITION_FRONTRIGHT_DRIVE_JAG_ID = 11;
     public final static int TRITION_FRONTLEFT_DRIVE_JAG_ID = 7;
     public final static int TRITION_BACKRIGHT_DRIVE_JAG_ID = 3;
     public final static int TRITION_BACKLEFT_DRIVE_JAG_ID = 10;
@@ -128,7 +129,7 @@ public class TritonDefinitions {
     public final static int TRITION_ACQUISITION_SPINNER_ID = 2;
     public final static int TRITION_ACQUISITION_ARM_ID = 5;
     
-    public final static int TRITION_TOP_FLY_WHEEL_ID = 8;
+    public final static int TRITION_TOP_FLY_WHEEL_ID = 3;
     public final static int TRITION_BOTTOM_FLY_WHEEL_ID = 4;
     public final static int TRITON_BOX_MOTOR_ID = 9;
     
@@ -185,6 +186,10 @@ public class TritonDefinitions {
     public static double FLYWHEEL_STOP = 0.0;
     public static double BOX_SPEED_STOP = 0.0;
     public static String JAG_LOWVOLTAGE = "JAG_LOWVOLTAGE";
+    public static String TIMEDDRIVE_FORWARD = "FORWARD";
+    public static String TIMEDDRIVE_BACKWARD = "BACKWARD";
+    public static String TIMEDDRIVE_LEFT = "LEFT";
+    public static String TIMEDRIVE_RIGHT = "RIGHT";
 
    
     
