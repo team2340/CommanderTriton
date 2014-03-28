@@ -27,7 +27,7 @@ import team2340.TritonDefinitions;
  */
 public class RobotTemplate extends IterativeRobot {
 
-    Command autonomousCommand;
+    Command autonomousCommand = new BasicAuto();
 
     /**
      * This function is run when the robot is first started up and should be
@@ -35,7 +35,7 @@ public class RobotTemplate extends IterativeRobot {
      */
     public void robotInit() {
         // instantiate the command used for the autonomous period
-        autonomousCommand = new BasicAuto();
+        //autonomousCommand = new BasicAuto();
 
         // Initialize all subsystems
         CommandBase.init();
@@ -58,7 +58,7 @@ public class RobotTemplate extends IterativeRobot {
         // teleop starts running. If you want the autonomous to 
         // continue until interrupted by another command, remove
         // this line or comment it out.
-        autonomousCommand.cancel();
+       autonomousCommand.cancel();
     }
 
     /**

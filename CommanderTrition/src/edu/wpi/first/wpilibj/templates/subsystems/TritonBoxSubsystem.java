@@ -27,7 +27,7 @@ public class TritonBoxSubsystem extends Subsystem{
      static private TritonBoxSubsystem subsystem;
     
     private TritonBoxSubsystem() {
-        topFlyWheel = CANJaguarFactory.getInstance().get(TritonDefinitions.TRITION_TOP_FLY_WHEEL_ID);
+       topFlyWheel = CANJaguarFactory.getInstance().get(TritonDefinitions.TRITION_TOP_FLY_WHEEL_ID);
         bottomFlyWheel = CANJaguarFactory.getInstance().get(TritonDefinitions.TRITION_BOTTOM_FLY_WHEEL_ID);
         boxMotor = CANJaguarFactory.getInstance().get(TritonDefinitions.TRITON_BOX_MOTOR_ID);
         

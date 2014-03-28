@@ -121,15 +121,15 @@ public class TritonDefinitions {
     
     // can jag ids
 //    
-    public final static int TRITION_FRONTRIGHT_DRIVE_JAG_ID = 11;
-    public final static int TRITION_FRONTLEFT_DRIVE_JAG_ID = 7;
-    public final static int TRITION_BACKRIGHT_DRIVE_JAG_ID = 3;
-    public final static int TRITION_BACKLEFT_DRIVE_JAG_ID = 10;
+    public final static int TRITION_FRONTRIGHT_DRIVE_JAG_ID = 7;
+    public final static int TRITION_FRONTLEFT_DRIVE_JAG_ID = 2;
+    public final static int TRITION_BACKRIGHT_DRIVE_JAG_ID = 5;
+    public final static int TRITION_BACKLEFT_DRIVE_JAG_ID = 3;
     
-    public final static int TRITION_ACQUISITION_SPINNER_ID = 2;
-    public final static int TRITION_ACQUISITION_ARM_ID = 5;
+    public final static int TRITION_ACQUISITION_SPINNER_ID = 10;
+    public final static int TRITION_ACQUISITION_ARM_ID = 6;
     
-    public final static int TRITION_TOP_FLY_WHEEL_ID = 3;
+    public final static int TRITION_TOP_FLY_WHEEL_ID = 8;
     public final static int TRITION_BOTTOM_FLY_WHEEL_ID = 4;
     public final static int TRITON_BOX_MOTOR_ID = 9;
     
@@ -163,16 +163,16 @@ public class TritonDefinitions {
     public final static double SHOOTER_HEIGHT_IN = 20.0; // FIX ME
     public final static double SHOOTER_WHEEL_DIAMETER_IN = 6.0;
     public final static double SHOOTER_CIRCUMFERENCE_IN = Math.PI * SHOOTER_WHEEL_DIAMETER_IN;
-    public static double BOX_UP_SPEED = 0.25;
-    public static double BOX_DOWN_SPEED = 0.25;
+    public static double BOX_UP_SPEED = 0.90;
+    public static double BOX_DOWN_SPEED = -0.55;
     public static double BOX_STOP = 0.0;
     public static long BOX_PARTIAL_MOVE_SLEEP_TIME = 2;
     public static long ACQUISITION_ARM_DELAY_TIME = 2;
-    public static double ARM_STOP = 0.25;
+    public static double ARM_STOP = -0.25;
 
-    public static double ACQUISITION_ARM_OUT_SPEED = 0.68;
-    public static double ACQUISITION_ARM_IN_SPEED = -0.25;
-    public static double ACQUISITION_ARM_TIMEOUT = 0.5;
+    public static double ACQUISITION_ARM_OUT_SPEED = -0.70;
+    public static double ACQUISITION_ARM_IN_SPEED = 0.78;
+    public static double ACQUISITION_ARM_TIMEOUT = 0.25;
     
     public static double TRITON_SPINNER_TIMEOUT = 1;
     public static double TRITON_SPINNER_SPEED = 0.75;

@@ -16,8 +16,8 @@ import edu.wpi.first.wpilibj.templates.subsystems.TritonDriveSubsystem;
 public abstract class CommandBase extends Command {
 
     public static OI oi;
-   // public TritonDriveSubsystem drive = TritonDriveSubsystem.getInstance();
-    public TritonDriveSubsystem drive;
+    public TritonDriveSubsystem drive = TritonDriveSubsystem.getInstance();
+   // public TritonDriveSubsystem drive;
     public TritonAcquisitionSubsystem acquisition = TritonAcquisitionSubsystem.getInstance();
     public TritonBoxSubsystem theBox = TritonBoxSubsystem.getInstance();
    

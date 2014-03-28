@@ -79,6 +79,7 @@ public class TritonDriveSubsystem extends Subsystem {
     }
 
     synchronized private void xAxis(double value) throws CANTimeoutException {
+        System.out.println(" xAxis: " + value);
         frontRight.setX(value * -1);
         frontLeft.setX(-1 * value);
         backRight.setX(value);
@@ -86,6 +87,7 @@ public class TritonDriveSubsystem extends Subsystem {
     }
 
     synchronized private void yAxis(double value) throws CANTimeoutException {
+        System.out.println(" yAxis : " + value);
         frontRight.setX(value);
         frontLeft.setX(value * -1);
         backRight.setX(value);
@@ -121,8 +123,8 @@ public class TritonDriveSubsystem extends Subsystem {
         double rightValue = rightSide.getY() * scaleFactor * -1;
         System.out.println(" Directional Drive: " + leftValue + " r: " + rightValue);
         frontLeft.setX(leftValue);
-        backLeft.setX(leftValue);
-        frontRight.setX(rightValue);
+        backLeft.setX(rightValue);
+        frontRight.setX(leftValue);
         backRight.setX(rightValue);
         } catch (Exception ex) {ex.printStackTrace();}
         
@@ -153,14 +155,19 @@ public class TritonDriveSubsystem extends Subsystem {
     public void controlledDrive(double xValue, double yValue) {
         SmartDashboard.putNumber("SpeedTest", yValue);
         SmartDashboard.putNumber("SpeedGraph", xValue);
+        
         try {
             if (xValue == 0.0 && yValue > 0.0) {
+                System.out.println(" Controlled Drive: f: " + yValue);
                 forward(yValue);
             } else if (xValue == 0.0 && yValue < 0.0) {
+                System.out.println(" Controlled Drive: B: " + yValue);
                 reverse(yValue);
             } else if (xValue > 0.0 && yValue == 0.0) {
+                System.out.println(" Controlled Drive: R: " + xValue);
                 right(xValue);
             } else if (xValue < 0.0 && yValue == 0.0) {
+                System.out.println(" Controlled Drive: L: " + yValue);
                 left(xValue);
             } 
 
@@ -172,12 +179,13 @@ public class TritonDriveSubsystem extends Subsystem {
     public void mainDrive(Direction leftDirection, Direction rightDirection, Direction dPad, boolean rightBack,
             boolean leftBack, boolean rightTop, boolean leftTop) {
             
-            double driveSetting = 0.75;
+            double driveSetting = 1.0;
             try {
             driveSetting = SmartDashboard.getNumber("DriverSlider");
             SmartDashboard.putNumber("DriverBox", driveSetting);
             } catch (Exception ex) {}
             if ( dPad.getX() != 0 || dPad.getY() != 0) {
+                 
             controlledDrive((driveSetting * dPad.getX()), (driveSetting * dPad.getY())); 
             }
             else if ( leftDirection.getY() != 0 || rightDirection.getY() != 0) {
@@ -185,16 +193,28 @@ public class TritonDriveSubsystem extends Subsystem {
             }
             else if (rightBack || leftBack ) {
                 if (rightBack) {
-                    spin(.85);
+                    spin(1.0);
                 }
                 else if (leftBack) {
-                    spin(-0.85);
+                    spin(-1.0);
                 }
             }
             else {
                 driveBreak();
             }
 
+    }
+    public void mainDrive2(Direction leftDirection, Direction rightDirection, Direction dPad, boolean rightBack,
+            boolean leftBack, boolean rightTop, boolean leftTop)
+    {
+        try {
+            frontLeft.setX(dPad.getX());
+            frontRight.setX(dPad.getX());
+            backLeft.setX(dPad.getX());
+            backRight.setX(dPad.getX());
+        } catch (CANTimeoutException ex) {
+            ex.printStackTrace();
+        }
     }
 //TODO: VERIFY LEFT/RIGHT MOVEMENT
 //TODO: VERIFY NUMROTATIONS DISTANCE

@@ -13,6 +13,7 @@ package edu.wpi.first.wpilibj.templates.commands;
 public class LookDown extends CommandBase{
     public LookDown() {
         requires(theBox);
+        setTimeout(0.5);
     }
 
     protected void initialize() { }
@@ -22,12 +23,15 @@ public class LookDown extends CommandBase{
     }
 
     protected boolean isFinished() {
-        return theBox.lookingDown();
+        return isTimedOut();
        }
 
-    protected void end() {}
+    protected void end() {
+        theBox.stopLooking();
+    }
 
     protected void interrupted() {
+        end(); 
     }
     
 }

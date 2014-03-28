@@ -30,10 +30,8 @@ public class OI {
     private void checkShooterController(){
         shooterController.getStartButton().whenPressed(new JoyStickUpdate("SC"));
        
-        shooterController.getXButton().whileHeld(new LowerArm());
-        shooterController.getYButton().whileHeld(new RaiseArm());
-        shooterController.getXButton().whenReleased(new HoldArm());
-        shooterController.getYButton().whenReleased(new HoldArm());
+        shooterController.getXButton().whenPressed(new LowerArm() );
+        shooterController.getYButton().whenPressed(new RaiseArm());
         
         shooterController.getBButton().whenPressed(new AcquireBallCommand());
         shooterController.getAButton().whenPressed(new RepelBallCommand());
@@ -46,11 +44,18 @@ public class OI {
     private void checkDriverController(){    
         driveController.getStartButton().whenPressed(new JoyStickUpdate("DC"));
         
-      /*  driveController.getXButton().whenPressed(new LowerArm());
-         driveController.getYButton().whenPressed(new RaiseArm());
-         driveController.getAButton().whenPressed(new AcquireBallCommand());
-         driveController.getBButton().whenPressed(new RepelBallCommand());
-*/
+        //driveController.getXButton().whenPressed(new LowerArm() );
+        //driveController.getYButton().whenPressed(new RaiseArm());
+        
+       // driveController.getBButton().whenPressed(new AcquireBallCommand());
+       // driveController.getAButton().whenPressed(new RepelBallCommand());
+        
+        //driveController.getRBButton().whenPressed(new ShootBall());
+        
+       // driveController.getLBButton().whenPressed(new LookUp());
+      //  driveController.getLTButton().whenPressed(new LookDown());
+      
+      
     }
     public double getRightStickY() {
         return driveController.getRightStick().getY();

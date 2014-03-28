@@ -39,9 +39,13 @@ public class CANJaguarModeSwitcher {
         }
         
         public CANJaguar initializeOpenLoop(int id) {
+        System.out.println("In initializeOpenLoop");
             CANJaguar canJag = CANJaguarFactory.getInstance().get(id);
-        try {            
+       try {
+           System.out.println("Got jaguar : " + canJag.getFaults());
+             
             canJag.disableControl();
+            
         } catch (CANTimeoutException ex) {
             ex.printStackTrace();
         }

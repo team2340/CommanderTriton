@@ -11,9 +11,10 @@ package edu.wpi.first.wpilibj.templates.commands;
  * @author Team2340
  */
 public class LookUp extends CommandBase{
-    
+
     public LookUp() {
         requires(theBox);
+        setTimeout(0.5);
     }
 
     protected void initialize() { }
@@ -23,16 +24,15 @@ public class LookUp extends CommandBase{
     }
 
     protected boolean isFinished() {
-        return theBox.lookingUp();
+        return isTimedOut();
     }
 
     protected void end() {
-        System.out.println(" END - Stop Looking");
         theBox.stopLooking();
     }
 
     protected void interrupted() {
         end();
     }
-    
+
 }

@@ -16,6 +16,7 @@ public class RaiseArm extends CommandBase{
 
     public RaiseArm() {
         requires(acquisition);
+        setTimeout(TritonDefinitions.ACQUISITION_ARM_TIMEOUT);
     }
 
 
@@ -27,13 +28,16 @@ public class RaiseArm extends CommandBase{
     }
 
     protected boolean isFinished() {
-        return true;
+        //return true;
+        return isTimedOut();
     }
 
     protected void end() {
+        acquisition.armStop();
     }
 
     protected void interrupted() {
+        end();
     }
     
 }

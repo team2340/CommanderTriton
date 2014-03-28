@@ -26,7 +26,7 @@ public class TimedDrive extends CommandBase {
     protected void execute() {
         try{
         if (direction.equalsIgnoreCase(TritonDefinitions.TIMEDDRIVE_FORWARD)) {
-            drive.forward(.65);
+            drive.forward(1.0);
         }
         else if (direction.equalsIgnoreCase(TritonDefinitions.TIMEDDRIVE_BACKWARD)) {
             drive.reverse(.65);

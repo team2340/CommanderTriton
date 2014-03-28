@@ -8,6 +8,7 @@ package edu.wpi.first.wpilibj.templates.commandgroup;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.templates.commands.AcquireBallCommand;
+import edu.wpi.first.wpilibj.templates.commands.LookUp;
 import edu.wpi.first.wpilibj.templates.commands.RaiseArm;
 import edu.wpi.first.wpilibj.templates.commands.ShootBall;
 import edu.wpi.first.wpilibj.templates.commands.TimedDrive;
@@ -20,9 +21,10 @@ import team2340.TritonDefinitions;
 public class BasicAuto extends CommandGroup{
     public BasicAuto() {
         addSequential(new TimedDrive(TritonDefinitions.TIMEDDRIVE_FORWARD, 2.0));
-        addParallel(new ShootBall());
-        addParallel(new RaiseArm());
-        addParallel(new AcquireBallCommand());
+   //     addSequential(new LookUp());
+   //     addParallel(new ShootBall());
+   //     addParallel(new RaiseArm());
+   //     addParallel(new AcquireBallCommand());
         
     }
     
