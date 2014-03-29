@@ -17,7 +17,7 @@ import edu.wpi.first.wpilibj.templates.commands.ShootBall;
 public class PrepareToShoot extends CommandGroup{
     public PrepareToShoot(){
         addParallel(new RaiseArm());
-        addParallel(new ShootBall());
+        addParallel(new ShootBall(1.0));
     }
     
 }

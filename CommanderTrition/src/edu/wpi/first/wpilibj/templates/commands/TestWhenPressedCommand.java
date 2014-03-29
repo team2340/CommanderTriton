@@ -10,28 +10,28 @@ package edu.wpi.first.wpilibj.templates.commands;
  *
  * @author Team2340
  */
-public class LookDown extends CommandBase{
-    public LookDown() {
-        requires(theBox);
-        setTimeout(.25);
+public class TestWhenPressedCommand extends CommandBase {
+    public TestWhenPressedCommand() {
     }
 
-    protected void initialize() { }
+    protected void initialize() {
+    }
 
     protected void execute() {
-        theBox.lookDown();
+        System.out.println( " When Pressed " );
     }
 
     protected boolean isFinished() {
-        return isTimedOut();
-       }
+        return true;
+    }
 
     protected void end() {
-        theBox.stopLooking();
+        System.out.println( " When Released " );
+        
     }
 
     protected void interrupted() {
-        end(); 
+        end();
     }
     
 }

@@ -164,7 +164,7 @@ public class TritonDefinitions {
     public final static double SHOOTER_WHEEL_DIAMETER_IN = 6.0;
     public final static double SHOOTER_CIRCUMFERENCE_IN = Math.PI * SHOOTER_WHEEL_DIAMETER_IN;
     public static double BOX_UP_SPEED = 0.90;
-    public static double BOX_DOWN_SPEED = -0.55;
+    public static double BOX_DOWN_SPEED = -0.75;
     public static double BOX_STOP = 0.0;
     public static long BOX_PARTIAL_MOVE_SLEEP_TIME = 2;
     public static long ACQUISITION_ARM_DELAY_TIME = 2;
@@ -180,7 +180,7 @@ public class TritonDefinitions {
     public static double TRITON_SPINNER_REVERSE = -0.75;
 
     public static long SHOOTER_SLEEP_TIME = 10;
-    public static double TOP_FLYWHEEL_SPEED = -1.00;
+    public static double TOP_FLYWHEEL_SPEED = -1.0;
     public static double BOTTOM_FLYWHEEL_SPEED = 1.00;
     public static double FLY_WHEEL_STOP = 0.0;
     public static double FLYWHEEL_STOP = 0.0;

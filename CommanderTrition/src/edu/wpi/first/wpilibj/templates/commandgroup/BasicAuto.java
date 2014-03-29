@@ -20,7 +20,7 @@ import team2340.TritonDefinitions;
  */
 public class BasicAuto extends CommandGroup{
     public BasicAuto() {
-        addSequential(new TimedDrive(TritonDefinitions.TIMEDDRIVE_FORWARD, 2.0));
+      addSequential(new TimedDrive(TritonDefinitions.TIMEDDRIVE_FORWARD, 4.0));
    //     addSequential(new LookUp());
    //     addParallel(new ShootBall());
    //     addParallel(new RaiseArm());

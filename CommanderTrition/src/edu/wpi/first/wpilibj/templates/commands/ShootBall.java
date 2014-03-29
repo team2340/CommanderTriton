@@ -11,18 +11,19 @@ package edu.wpi.first.wpilibj.templates.commands;
  * @author Team2340
  */
 public class ShootBall extends CommandBase{
-    
-    public ShootBall() {
+    private double shootSpeed = 1.0;
+    public ShootBall(double speed) {
         requires(theBox);
-        //requires(acquisition);
         setTimeout(5);
+        shootSpeed = speed;
     }
 
     protected void initialize() { }
+        //requires(acquisition);
 
     protected void execute() {
         //theBox.lookUp();
-        theBox.startFlyWheels();
+        theBox.startFlyWheelsSpeed(shootSpeed);
         //acquisition.startSpinner();
         //acquisition.armIn();
     }

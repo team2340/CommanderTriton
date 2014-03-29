@@ -114,5 +114,15 @@ public class TritonBoxSubsystem extends Subsystem{
              ex.printStackTrace();
          }
     }
+
+    public void startFlyWheelsSpeed(double speed) {
+             try {
+             topFlyWheel.setX(-1.0 * speed);
+             bottomFlyWheel.setX(speed);
+         } catch (CANTimeoutException ex) {
+             System.out.println(" startFlyWheel Fail");
+             ex.printStackTrace();
+         }
+    }
     
 }

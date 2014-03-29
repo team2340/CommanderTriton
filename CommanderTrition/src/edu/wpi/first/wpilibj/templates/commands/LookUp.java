@@ -14,7 +14,7 @@ public class LookUp extends CommandBase{
 
     public LookUp() {
         requires(theBox);
-        setTimeout(0.5);
+        setTimeout(0.25);
     }
 
     protected void initialize() { }

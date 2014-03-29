@@ -36,7 +36,8 @@ public class OI {
         shooterController.getBButton().whenPressed(new AcquireBallCommand());
         shooterController.getAButton().whenPressed(new RepelBallCommand());
         
-        shooterController.getRBButton().whenPressed(new ShootBall());
+        shooterController.getRBButton().whenPressed(new ShootBall(0.6));
+        shooterController.getRTButton().whenPressed(new ShootBall(1.0));
         
         shooterController.getLBButton().whenPressed(new LookUp());
         shooterController.getLTButton().whenPressed(new LookDown());
